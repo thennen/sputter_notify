@@ -9,11 +9,11 @@ print('This program sends an email when deposition completes.')
 
 # Load trigger window information from file
 try:
-    with open(path[0] + '\\window.dat', 'r') as f:
+    with open(path[0] + '\\trigger_window.dat', 'r') as f:
         trig_title = f.readline().strip('\n')
         trig_loc = f.readline()
 except:
-    raise Exception('window.dat not found.  Run train.py')
+    raise Exception('trigger_window.dat not found.  Use learn_window.py to create it')
 
 with open(path[0] + '\\google.dat', 'r') as f:
     email = f.readline().strip('\n')

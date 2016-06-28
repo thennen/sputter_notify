@@ -16,7 +16,7 @@ except:
     raise Exception('trigger_window.dat not found.  Use learn_window.py to create it')
 
 with open(path[0] + '\\google.dat', 'r') as f:
-    email = f.readline().strip('\n')
+    emailaddr = f.readline().strip('\n')
     password = f.readline()
 
 
@@ -30,14 +30,14 @@ subject = 'Deposition finished.'
 body = ''
 
 msg = MIMEMultipart()
-msg['From'] = email
+msg['From'] = emailaddr
 msg['To'] = toaddr
 msg['Subject'] = subject
 msg.attach(MIMEText(body, 'plain'))
 
 server = smtplib.SMTP('smtp.gmail.com', 587)
 server.starttls()
-server.login(email, 'fu11ert0n')
+server.login(emailaddr, password)
 text = msg.as_string()
 
 def trigger():
@@ -55,7 +55,7 @@ while 1:
         sleep(5)
 
     print('Trigger window detected. Sending email to {}'.format(toaddr))
-    server.sendmail(email, toaddr, text)
+    server.sendmail(emailaddr, toaddr, text)
 
     while trigger():
         # Loop until different window in foreground

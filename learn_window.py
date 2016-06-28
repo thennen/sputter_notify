@@ -5,7 +5,7 @@ from sys import path
 # Learn what window we're looking for
 # Goes by window title and location of window on the screen
 # Output learned_window.dat, change to trigger_window.dat to use it as trigger
-print('Bring trigger window to the foreground in 10 seconds')
+print('Bring the window to the foreground in 10 seconds')
 sleep(10)
 active_window = GetForegroundWindow()
 active_title = GetWindowText(active_window)
